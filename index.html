@@ -6,6 +6,34 @@
     <title>Document</title>
 </head>
 <body>
-    Hiii!
+    <div>Simple Registration</div>
+    <form action="submit" id="regForm">
+        <div>name : <input type="text" required name="name" id="name"></div>
+        <div>email : <input type="email" required name="email" id="email"></div>
+        <div>choice : <select name="event" id="event">
+            <option value="seminar">seminar</option>
+        </select></div>
+        <input type="submit" value="submit">
+        <div id="Message"></div>
+    </form>
+    <script>
+        const form = document.getElementById("regForm");
+        const msg = document.getElementById('Message');
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+            const name = form.name.value.trim();
+            const email = form.email.value.trim();
+            const event = form.event.value;
+            if(!name || !email){
+                msg.textContent = 'Please fill all fields';
+                msg.style.color = 'red';
+                return;
+            }
+            msg.textContent = `Hello ${name}! Registered for ${event} `;
+            msg.style.color = 'green';
+            form.reset();
+        });
+        
+    </script>
 </body>
 </html>
